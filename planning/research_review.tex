@@ -1,0 +1,41 @@
+\documentclass[12pt,a4paper,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Markus Meier}
+\title{Research Review AI}
+
+\begin{document}
+
+\section{Research Review AI Planning}
+The research field of artificial intelligence was founded by practical needs in robotics and planning. The first major planning system STRIPS \cite{fikes1971strips} was published in 1971. In 1992, it was shown that STRIPS is PSPACE-complete \cite{bylander1994computational}. A problem is PSPACE-complete if its required memory is polynomial in the input length (polynomial space) and if every other problem that can be solved in polynomial space can be transformed to it in polynomial time. 
+
+\subsection{Problem Representation Language}
+The 'classical' representation language was strongly influenced by STRIPS. The Action Description Language (ADL) \cite{pednault1986formulating} improved the language of STRIPS so that it became more relaxed and more real world problems could be described.
+
+From those predecessors arose the Problem Domain Description Language (PDDL) \cite{mcdermott1998pddl}. PDDL is the standard language for the International Planning Competition since 1998.
+
+\subsection{Linear Planning}
+In the early 1970s, planners used linear planning \cite{sacerdoti1975structure} to solve the problems. This means they considered totally ordered action sequences, so they tried to decompose problems by computing subplans for each subproblem and stringing together the subplans in some order.
+
+It was shown that some problems could not be solved with linear planning, e.g. the Sussman anomaly. Serializable subgoals \cite{korf1987planning} corresponds exactly to the problems that can be solved with linear planning.
+
+\subsection{Interleaving}
+A complete planner must allow for interleaving of actions from different subplans within a single sequence. One solution to interleaving problems was goal-regression planning \cite{waldinger1975achieving}. In goal-regression planning, steps in a totally ordered plan are reordered to avoid conflicts between subgoals.
+
+\subsection{Task Networks}
+Partial order planning (task networks) aims to detect conflicts \cite{tate1975interacting} and to protect achieved conditions from interference \cite{sussman1975computer}. The research was focused on task networks till the late 1990s. 
+
+\subsection{Heuristic Search Planner}
+In 1999, the focus of the research was led to state-space search with heuristics that was able to handle large planning problems \cite{bonet1999planning}.
+
+\subsection{Binary Decision Diagrams}
+Binary decision diagrams are compact data structures for boolean expressions. There are techniques for proving that a binary decision diagram is the solution to a planning problem. Recent research tries to apply these binary decision diagrams in planning problem solvers. 
+
+
+\bibliographystyle{plain}
+\bibliography{review_refs}
+
+\end{document}
+

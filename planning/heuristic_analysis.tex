@@ -1,0 +1,73 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{lscape}
+\usepackage{caption}
+
+\author{Markus Meier}
+\title{Heuristic Analysis}
+\begin{document}
+\section{Heuristic Analysis}
+\subsection{Non-heuristic search algorithms}
+The results for the three non-heuristic search algorithsm breadth first search, depth first graph search and uniform cost search are shown in the table below.
+In general the problem difficulty increases from problem 1 over problem 2 to problem 3.
+As expected, the depth first graph search does not produce optimal solutions. However, it is the fastest method.
+The breadth first search and the uniform cost search find optimal solutions.
+The breadth first search is slightly faster than the uniform cost search.
+
+\subsection{Heuristic search algorithms}
+We compare A* searches without heuristics (h1), with the ignore preconditions heuristic and with the pg levelsum. All three methods find optimal solutions. The fastest heuristic is with the pg levelsum.
+
+Considering the increasing problem difficulty, A* with the pg levelsum heuristic is the method that also scales best.
+
+\subsection{Summary}
+The A* search with the pg levelsum heuristic finds in all three problem cases in the optimal solution. The A* search is also the fastest method. Therefore, I would recommend to use this method. However, for real world problems with several thousands or millions of entities, the method might be still too slow.
+
+
+
+\begin{landscape}
+\begin{center}
+\captionof{table}{Non-heuristic searches}
+\begin{tabular}[pos]{c|c|c|c|c|c|c}
+problem   & method                   & expansions & goal tests & new nodes & plan length & time \\
+Problem 1 & breadth first search     & 43         & 56 & 180   & 6  & 0.53 \\
+Problem 1 & depth first graph search & 21         & 22 & 84    & 20 & 0.25 \\
+Problem 1 & uniform cost search      & 55         & 57 & 224   & 6  & 0.73 \\
+
+Problem 2 & breadth first search     & 3343       & 4609 & 30509 & 9   & 308.91 \\
+Problem 2 & depth first graph search & 624        & 625  & 5602  & 619 & 54.10 \\
+Problem 2 & uniform cost search      & 4853       & 4853 & 44041 & 9   & 434.89 \\
+
+Problem 3 & breadth first search     & 14663      & 18098 & 129631 & 12   & 1547.98 \\
+Problem 3 & depth first graph search & 408        & 409   & 3364   & 392  & 39.06 \\
+Problem 3 & uniform cost search      & 18223      & 18225 & 159618 & 12   & 1812.65 \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\captionof{table}{A* search with heuristics}
+\begin{tabular}[pos]{c|c|c|c|c|c|c}
+problem   & method                   & expansions & goal tests & new nodes & plan length & time \\
+Problem 1 & astar search with h1     & 55         & 57         & 224       & 6           & 0.61 \\
+Problem 1 & astar search with ignore preconditions     & 41         & 43         & 170       & 6           & 0.64 \\
+Problem 1 & astar search with pg levelsum     & 11         & 13         & 50       & 6           & 0.59 \\
+
+Problem 2 & astar search with h1     & 4853         & 4855         & 44041       & 9           & 435.43 \\
+Problem 2 & astar search with ignore preconditions     & 1450         & 1452         & 13303       & 9           & 163.85 \\
+Problem 2 & astar search with pg levelsum     & 86         & 88         & 841       & 9           & 14.70 \\
+
+Problem 3 & astar search with h1     & 18223         & 18225         & 159618       & 12           & 1902.70 \\
+Problem 3 & astar search with ignore preconditions     & 5040         & 5042         & 44944       & 12           & 640.72 \\
+Problem 3 & astar search with pg levelsum     & 318         & 320         & 2934       & 12           & 67.02 \\
+        
+\end{tabular}
+\end{center}
+\end{landscape}
+
+
+
+
+
+\end{document}
